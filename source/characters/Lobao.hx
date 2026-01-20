@@ -7,6 +7,5 @@ class Lobao extends Character
 
     public function new(x:Float, y:Float) {
         super(x,y,'cachorrao',10);
-        velocity.x = 0;
     }
 }

@@ -77,18 +77,14 @@ class MapaMainState extends FlxState
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-        if(player !=null)
-        {
-            playerMoviments(elapsed);
-            FlxG.collide(player, objectsMapGroup.members[objectToCollide]);
-            player.scale.set(FlxMath.lerp(player.scale.x, 1, elapsed*7),FlxMath.lerp(player.scale.y, 1, elapsed*7));
+        FlxG.collide(player, objectsMapGroup.members[objectToCollide]);
+        player.scale.set(FlxMath.lerp(player.scale.x, 1, elapsed*7),FlxMath.lerp(player.scale.y, 1, elapsed*7));
             
-            if(player.isTouching(DOWN) && FlxG.keys.justPressed.SPACE)
-			    player.velocity.y = -400;
+        if(player.isTouching(DOWN) && FlxG.keys.justPressed.SPACE)
+			player.velocity.y = -400;
 
-            tacarMachado();
-            abaterComEspada();
-        }
+        tacarMachado();
+        abaterComEspada();
 
     }
 
@@ -133,16 +129,4 @@ class MapaMainState extends FlxState
         FlxTween.tween(text,{y:text.y - 60}, 2, {onComplete:(_)->text.destroy()});
         insert(members.indexOf(object),text);
     }
-
-    public function playerMoviments(e:Float)
-	{
-		final playerVelocity:Float = 390;
-		if(FlxG.keys.pressed.LEFT||FlxG.keys.pressed.RIGHT)
-		{
-			player.velocity.x = FlxG.keys.pressed.LEFT ? -playerVelocity : playerVelocity;
-			player.flipX = FlxG.keys.pressed.LEFT;
-		} else {
-			player.velocity.x  = 0;
-		}
-	}
 }
