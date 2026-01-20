@@ -38,7 +38,6 @@ class MapaMainState extends FlxState
         this.playerPositions = playerPositions;
     }
 
-
     override function create() {
         super.create();
 
@@ -80,7 +79,7 @@ class MapaMainState extends FlxState
         FlxG.collide(player, objectsMapGroup.members[objectToCollide]);
         player.scale.set(FlxMath.lerp(player.scale.x, 1, elapsed*7),FlxMath.lerp(player.scale.y, 1, elapsed*7));
             
-        if(player.isTouching(DOWN) && FlxG.keys.justPressed.SPACE)
+        if(player.isTouching(DOWN) && FlxG.keys.justPressed.SPACE||FlxG.keys.justPressed.W)
 			player.velocity.y = -400;
 
         tacarMachado();
@@ -118,7 +117,7 @@ class MapaMainState extends FlxState
 			player.podeAtacarComEspada = false;
 			espada.visible = true;
 			espada.animation.play('attack');
-			new FlxTimer().start(0.7,(_)->player.podeAtacarComEspada = true);
+			new FlxTimer().start(0.5,(_)->player.podeAtacarComEspada = true);
 		}
 	}
 

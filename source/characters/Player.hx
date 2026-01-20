@@ -18,10 +18,10 @@ class Player extends Character
     override function update(elapsed:Float) {
         super.update(elapsed);
 
-		if(FlxG.keys.pressed.LEFT||FlxG.keys.pressed.RIGHT)
+		if(FlxG.keys.pressed.A||FlxG.keys.pressed.D)
 		{
-			velocity.x = FlxG.keys.pressed.LEFT ? -playerVelocity : playerVelocity;
-			flipX = FlxG.keys.pressed.LEFT;
+			velocity.x = FlxG.keys.pressed.A ? -playerVelocity : playerVelocity;
+			flipX = FlxG.keys.pressed.A;
 		} else {
 			velocity.x  = 0;
 		}
